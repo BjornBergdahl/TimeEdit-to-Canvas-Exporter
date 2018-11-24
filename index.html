@@ -1,18 +1,94 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 
-  <title>TimeEdit to Canvas Exporter</title>
-  <meta name="description" content="TimeEdit to Canvas Exporter">
-  <meta name="author" content="Andreas kuoppa, Björn Bergdahl">
+	<title>TimeEdit to Canvas Exporter</title>
+	<meta name="description" content="TimeEdit to Canvas Exporter">
+	<meta name="author" content="Andreas kuoppa, Björn Bergdahl, Pernilla Johansson">
 
-  <link rel="stylesheet" href="styles.css">
-
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <script src="js/scripts.js"></script>
+
+	<h1>TimeEdit to Canvas exporter</h1>
+
+	
+	<h2>Import calendar Events from TimeEdit:</h2>
+
+	<div id="TimeEditLink"><span id="TimeEditLogo">TE</span><a href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">Go To TimeEdit (new tab)</a></div>
+
+	<form>
+		Link to TimeEdit Calendar:<br>
+		<input type="text" name="link">
+		<div class="container">
+  			<span class="lock"></span>
+  		</div>
+	</form>
+
+	<button class="pasteButton">Paste from Clipboard</button>
+
+
+	<h2>Calendar Events:</h2>
+
+	<div id="formInserter"></div>
+
+	<!-- Example of an imported Event -->
+
+
+	<h2>Canvas Access Settings:</h2>
+
+	<form>
+		Select Calendar by:
+		<select>
+			<option value="LTU_ID">LTU ID</option>
+			<option value="Course_Code">Course Code</option>
+		</select>
+		<br>
+		LTU ID:
+		<input type="text" name="LTU_ID">
+		<br>
+		User ID:
+		<input type="text" name="User_ID">
+		<br>
+		Course Code:
+		<input type="text" name="Course_Code">
+		<br>
+		Course ID:
+		<input type="text" name="Course_ID">
+		<br>
+		Canvas Acces Token:<br>
+		<input type="text" name="Access_Token">
+	</form>
+
+	<button class="pasteButton">Paste from Clipboard</button>
+
+	<h2>Export Calendar Events to Canvas</h2>
+
+	<button id="submitButton">Submit all to Canvas</button>
+
+	<footer>
+	<p>A service for exporting calendar events from TimeEdit to Canvas.</p>
+
+	<p>Built for use at Lulea University of Technology.</p>
+
+	<p>Made by Andreas Kuoppa, Björn Bergdahl and Pernilla Johansson</p>
+
+	<p>&copy; 2018</p>
+
+	<div class="divider"></div>
+
+	<p><a href="">[TERMS OF USE HERE]</a></p>
+
+	<p>Further development of this service is allowed, as long as it conforms to the <a href="">[LICENSE HERE]</a> and our <a href="">[OWN LICENCE HERE]</a>.</p>
+
+	<p>The source code for this service can be found here <a href="">[GITHUB LINK HERE]</a>.</p>
+	</footer>
+
+	<script src="js/scripts.js"></script>
 </body>
+
 </html>
