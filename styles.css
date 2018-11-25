@@ -1,0 +1,50 @@
+body {
+	margin: 0;
+	font-family: "Neue Helvetica", Lato, Calibri Light, sans-serif;
+	font-weight: normal;
+	line-height: 1.5;
+	color: #18324D;
+	width: 100%;
+}
+main {
+	margin: 1em 1em;
+	line-height: 3em;
+}
+input, select, textarea {
+	font-family: "Neue Helvetica", Lato, Calibri Light, sans-serif;
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+	height: 2.5em;
+	color: #18324D;
+}
+textarea {
+	height: 5em;
+}
+.fullWidth {
+	width: 100%;
+}
+
+.eventHeader {
+	background: #18324D;
+	color: white;
+}
+.eventContent {
+	border: 1px solid #18324D;
+}
+.extraMargin {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+
+footer {
+	background: #D2D2D2;
+	text-align: center;
+}
+#footerContent {
+	width: 80%;
+	margin: 0 auto;
+}
+.divider {
+	border: .5px solid grey;
+}

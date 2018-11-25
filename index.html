@@ -4,123 +4,136 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>TimeEdit to Canvas Exporter</title>
 	<meta name="description" content="TimeEdit to Canvas Exporter">
 	<meta name="author" content="Andreas kuoppa, Björn Bergdahl, Pernilla Johansson">
 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-	<h1>TimeEdit to Canvas exporter</h1>
+	<main>
+		<h1>TimeEdit to Canvas exporter</h1>
 
-	
-	<h2>Import calendar Events from TimeEdit:</h2>
+		
+		<h3>Import calendar Events from TimeEdit:</h3>
 
-	<div id="TimeEditLink"><span id="TimeEditLogo">TE</span><a href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">Go To TimeEdit (new tab)</a></div>
+		<div id="TimeEditLink"><span id="TimeEditLogo">TE</span><a href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">Go To TimeEdit (new tab)</a></div>
 
-	<form>
-		Link to TimeEdit Calendar:<br>
-		<input type="text" name="link">
-		<div class="container">
-  			<span class="lock"></span>
-  		</div>
-	</form>
+		<form>
+			Link to TimeEdit Calendar:<br>
+			<input type="text" name="link" class="fullWidth">
+			<div class="container">
+	  			<span class="lock"></span>
+	  		</div>
+		</form>
 
-	<button class="pasteButton">Paste from Clipboard</button>
+		<button class="pasteButton">Paste from Clipboard</button>
 
 
-	<h2>Calendar Events:</h2>
+		<h3>Calendar Events:</h3>
 
-	<div id="formInserter"></div>
+		<div id="formInserter"></div>
 
-	<!-- Example of an imported Event -->
-	<div class="eventBox">
-		<div class="eventHeader">
-			<button class="eventButton"></button>
-			Event Title
+		<!-- Example of an imported Event -->
+		<div class="eventBox">
+			<div class="eventHeader">
+				<div class="extraMargin">
+					<button class="eventButton"></button>
+					Event Title
+				</div>
+			</div>
+			<div class="eventContent">
+				<div class="extraMargin">
+					<form action="ADDACTIONHERE" id="eventForm">
+						Title:
+						<input type="text" name="title">
+						
+						<br>
+						Start Date:
+						<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
+						<br>
+						Start Time:
+						<input type="time" name="startTime">
+
+						<br>
+						End Date:
+						<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
+						<br>
+						End Time:
+						<input type="time" name="endTime">
+
+						<br>
+						Location:
+						<input type="text" name="location">
+						<br>
+						Description:
+						<br>
+						<textarea form="eventForm" name="description" class="fullWidth"></textarea>
+					</form>
+				</div>
+			</div>
 		</div>
-		<div class="eventContent">
-			<form action="ADDACTIONHERE" id="eventForm">
-				Title:
-				<input type="text" name="title">
-				
-				<br>
-				Start Date:
-				<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
-				<br>
-				Start Time:
-				<input type="time" name="startTime">
-
-				<br>
-				End Date:
-				<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
-				<br>
-				End Time:
-				<input type="time" name="endTime">
-
-				<br>
-				Location:
-				<input type="text" name="location">
-				<br>
-				Description:
-				<textarea form="eventForm" name="description">Enter description here...</textarea>
-			</form>
-		</div>
-	</div>
 
 
-	<h2>Canvas Access Settings:</h2>
+		<h3>Canvas Access Settings:</h3>
 
-	<form>
-		Select Calendar by:
-		<select>
-			<option value="LTU_ID">LTU ID</option>
-			<option value="Course_Code">Course Code</option>
-		</select>
-		<br>
-		LTU ID:
-		<input type="text" name="ltuId">
-		<br>
-		User ID:
-		<input type="text" name="userId">
-		<br>
-		Course Code:
-		<input type="text" name="courseCode">
-		<br>
-		Course ID:
-		<input type="text" name="courseId">
-		<br>
-		Canvas Acces Token:<br>
-		<input type="text" name="accessToken">
-	</form>
+		<form>
+			Select Calendar by:
+			<select>
+				<option value="LTU_ID">LTU ID</option>
+				<option value="Course_Code">Course Code</option>
+			</select>
+			<br>
+			LTU ID:
+			<input type="text" name="ltuId">
+			<br>
+			User ID:
+			<input type="text" name="userId">
+			<br>
+			Course Code:
+			<input type="text" name="courseCode">
+			<br>
+			Course ID:
+			<input type="text" name="courseId">
+			<br>
+			Canvas Acces Token:<br>
+			<input type="text" name="accessToken" class="fullWidth">
+		</form>
 
-	<button class="pasteButton">Paste from Clipboard</button>
+		<button class="pasteButton">Paste from Clipboard</button>
 
 
-	<h2>Export Calendar Events to Canvas</h2>
+		<h3>Export Calendar Events to Canvas</h3>
 
-	<button id="submitButton">Submit all to Canvas</button>
-
+		<button id="submitButton">Submit all to Canvas</button>
+	</main>
 
 	<footer>
-	<p>A service for exporting calendar events from TimeEdit to Canvas.</p>
+		<div id="footerContent">
+			<br>
+			<p>A service for exporting calendar events from TimeEdit to Canvas.</p>
 
-	<p>Built for use at Lulea University of Technology.</p>
+			<p>Built for use at Lulea University of Technology.</p>
 
-	<p>Made by Andreas Kuoppa, Björn Bergdahl and Pernilla Johansson</p>
+			<p>Made by Andreas Kuoppa, Björn Bergdahl and Pernilla Johansson</p>
 
-	<p>&copy; 2018</p>
+			<p>&copy; 2018</p>
 
-	<div class="divider"></div>
+			<div class="divider"></div>
 
-	<p><a href="">[TERMS OF USE HERE]</a></p>
+			<p><a href="">[TERMS OF USE HERE]</a></p>
 
-	<p>Further development of this service is allowed, as long as it conforms to the <a href="">[LICENSE HERE]</a> and our <a href="">[OWN LICENCE HERE]</a>.</p>
+			<p>Further development of this service is allowed, as long as it conforms to the <a href="">[LICENSE HERE]</a> and our <a href="">[OWN LICENCE HERE]</a>.</p>
 
-	<p>The source code for this service can be found here <a href="">[GITHUB LINK HERE]</a>.</p>
+			<p>The source code for this service can be found here<br><a href="">[GITHUB LINK HERE]</a>.</p>
+			<br>
+		</div>
 	</footer>
 
 
