@@ -85,7 +85,8 @@ button {
 	color: white;
 	border-radius: 5px;
 	line-height: 2.25em;
-	width: 350px;
+	width: 100%;
+	max-width: 350px;
 	cursor: pointer;
 }
 .pasteButton {
