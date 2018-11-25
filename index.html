@@ -17,102 +17,170 @@
 
 <body>
 
-	<main>
+	<header>
 		<h1>TimeEdit to Canvas exporter</h1>
+		<div class="divider"></div>
+	</header>
 
-		
-		<h3>Import calendar Events from TimeEdit:</h3>
+	<div class="centerWrapper">
+		<main>
 
-		<div id="TimeEditLink"><span id="TimeEditLogo">TE</span><a href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">Go To TimeEdit (new tab)</a></div>
+			<h3>Import calendar Events from TimeEdit:</h3>
 
-		<form>
-			Link to TimeEdit Calendar:<br>
-			<input type="text" name="link" class="fullWidth">
-			<div class="container">
-	  			<span class="lock"></span>
-	  		</div>
-		</form>
+			<div id="TimeEditLink"><span id="TimeEditLogo">TE</span><a href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">Go To TimeEdit (new tab)</a></div>
 
-		<button class="pasteButton">Paste from Clipboard</button>
+			<form>
+				Link to TimeEdit Calendar:<br>
+				<input type="text" name="link" class="fullWidth">
+				<div class="container">
+		  			<span class="lock"></span>
+		  		</div>
+			</form>
+
+			<button class="pasteButton">Paste from Clipboard</button>
 
 
-		<h3>Calendar Events:</h3>
+			<h3>Calendar Events:</h3>
 
-		<div id="formInserter"></div>
+			<div id="formInserter"></div>
 
-		<!-- Example of an imported Event -->
-		<div class="eventBox">
-			<div class="eventHeader">
-				<div class="extraMargin">
-					<button class="eventButton"></button>
-					Event Title
+			<!-- Example of an imported Event -->
+			<div class="eventBox">
+				<div class="eventHeader">
+					<div class="extraMargin">
+						<button class="eventButton"></button>
+						Event Title
+					</div>
+				</div>
+				<div class="eventContent">
+					<div class="extraMargin">
+						<form action="ADDACTIONHERE" id="eventForm">
+
+							<div class="row">
+								<div class="column">
+									Title:
+								</div>
+								<div class="column">
+									<input type="text" name="title">
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="column">
+									Start Date:
+								</div>
+								<div class="column">
+									<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="column">
+									Start Time:
+								</div>
+								<div class="column">
+									<input type="time" name="startTime">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="column">
+									End Date:
+								</div>
+								<div class="column">
+									<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="column">
+									End Time:
+								</div>
+								<div class="column">
+									<input type="time" name="endTime">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="column">
+									Location:
+								</div>
+								<div class="column">
+									<input type="text" name="location">
+								</div>
+							</div>
+
+							Description:
+							<textarea form="eventForm" name="description" class="fullWidth"></textarea>
+						</form>
+					</div>
 				</div>
 			</div>
-			<div class="eventContent">
-				<div class="extraMargin">
-					<form action="ADDACTIONHERE" id="eventForm">
-						Title:
-						<input type="text" name="title">
-						
-						<br>
-						Start Date:
-						<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
-						<br>
-						Start Time:
-						<input type="time" name="startTime">
 
-						<br>
-						End Date:
-						<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
-						<br>
-						End Time:
-						<input type="time" name="endTime">
 
-						<br>
-						Location:
-						<input type="text" name="location">
-						<br>
-						Description:
-						<br>
-						<textarea form="eventForm" name="description" class="fullWidth"></textarea>
-					</form>
+			<h3>Canvas Access Settings:</h3>
+
+			<form>
+				<div class="row">
+					<div class="column">
+						Select Calendar by:
+					</div>
+					<div class="column">
+						<select>
+							<option value="LTU_ID">LTU ID</option>
+							<option value="Course_Code">Course Code</option>
+						</select>
+					</div>
 				</div>
-			</div>
-		</div>
+
+				<div class="row">
+					<div class="column">
+						LTU ID:
+					</div>
+					<div class="column">
+						<input type="text" name="ltuId">
+					</div>
+				</div>
+
+				<div class ="row">
+					<div class="column">
+						User ID:
+					</div>
+					<div class="column">
+						<input type="text" name="userId">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="column">
+						Course Code:
+					</div>
+					<div class="column">
+						<input type="text" name="courseCode">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="column">
+						Course ID:
+					</div>
+					<div class="column">
+						<input type="text" name="courseId">
+					</div>
+				</div>
+
+				Canvas Acces Token:
+				<input type="text" name="accessToken" class="fullWidth">
+			</form>
+
+			<button class="pasteButton">Paste from Clipboard</button>
 
 
-		<h3>Canvas Access Settings:</h3>
+			<h3>Export Calendar Events to Canvas</h3>
 
-		<form>
-			Select Calendar by:
-			<select>
-				<option value="LTU_ID">LTU ID</option>
-				<option value="Course_Code">Course Code</option>
-			</select>
-			<br>
-			LTU ID:
-			<input type="text" name="ltuId">
-			<br>
-			User ID:
-			<input type="text" name="userId">
-			<br>
-			Course Code:
-			<input type="text" name="courseCode">
-			<br>
-			Course ID:
-			<input type="text" name="courseId">
-			<br>
-			Canvas Acces Token:<br>
-			<input type="text" name="accessToken" class="fullWidth">
-		</form>
-
-		<button class="pasteButton">Paste from Clipboard</button>
-
-
-		<h3>Export Calendar Events to Canvas</h3>
-
-		<button id="submitButton">Submit all to Canvas</button>
-	</main>
+			<button id="submitButton">Submit all to Canvas</button>
+		</main>
+	</div>
 
 	<footer>
 		<div id="footerContent">
@@ -135,7 +203,6 @@
 			<br>
 		</div>
 	</footer>
-
 
 	<script src="js/scripts.js"></script>
 

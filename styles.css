@@ -5,6 +5,19 @@ body {
 	line-height: 1.5;
 	color: #18324D;
 	width: 100%;
+	background: white;
+}
+header {
+	background: #18324D;
+	color: white; 
+	margin: 0 auto;
+	margin-top: 0;
+	text-align: center;
+}
+.centerWrapper {
+	max-width: 840px;
+	margin: 0 auto;
+	background: white;
 }
 main {
 	margin: 1em 1em;
@@ -13,15 +26,20 @@ main {
 input, select, textarea {
 	font-family: "Neue Helvetica", Lato, Calibri Light, sans-serif;
 	border: 1px solid lightgrey;
-	border-radius: 4px;
+	border-radius: 5px;
 	height: 2.5em;
 	color: #18324D;
+}
+input, select {
+	width: 100%;
+	max-width: 250px;
 }
 textarea {
 	height: 5em;
 }
 .fullWidth {
 	width: 100%;
+	max-width: none;
 }
 
 .eventHeader {
@@ -47,4 +65,37 @@ footer {
 }
 .divider {
 	border: .5px solid grey;
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+
+.centerButtonWrap {
+	text-align: center;
+}
+button {
+	font-size: 1em;
+	color: white;
+	border-radius: 5px;
+	line-height: 2.25em;
+	width: 350px;
+}
+.pasteButton {
+	background: #18324D;
+	border: 1px solid #18324D;
+}
+#submitButton {
+	background: green;
+	border: 1px solid green;
+}
+.eventButton {
+	width: 30px;
+	height: 30px;
+}
+
+.row {
+	display: flex;
+}
+.column {
+	flex: 50%;
 }
