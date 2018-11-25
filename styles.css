@@ -7,11 +7,31 @@ body {
 	width: 100%;
 	background: white;
 }
+#logoLink {
+	text-decoration: none;
+	display: block;
+}
+.underline {
+	text-decoration: underline;
+}
+#logoLink:hover {
+	background: lightgrey;
+}
+#timeEditLogo {
+	width: 30px;
+	line-height: 30px;
+	height: 30px;
+	display: inline-block;
+	background: white;
+	text-align: center;
+	font-weight: bolder;
+	color: #1C5469;
+	border: 12px solid #1C5469;
+}
 header {
 	background: #18324D;
 	color: white; 
-	margin: 0 auto;
-	margin-top: 0;
+	margin-top: -1.5em;
 	text-align: center;
 }
 .centerWrapper {
@@ -42,19 +62,6 @@ textarea {
 	max-width: none;
 }
 
-.eventHeader {
-	background: #18324D;
-	color: white;
-}
-.eventContent {
-	border: 1px solid #18324D;
-}
-.extraMargin {
-	margin-left: 1em;
-	margin-right: 1em;
-}
-
-
 footer {
 	background: #D2D2D2;
 	text-align: center;
@@ -79,6 +86,7 @@ button {
 	border-radius: 5px;
 	line-height: 2.25em;
 	width: 350px;
+	cursor: pointer;
 }
 .pasteButton {
 	background: #18324D;
@@ -88,9 +96,9 @@ button {
 	background: green;
 	border: 1px solid green;
 }
-.eventButton {
-	width: 30px;
-	height: 30px;
+.pasteButton:hover, #submitButton:hover {
+	background: grey;
+	border-color: grey;
 }
 
 .row {
@@ -98,4 +106,40 @@ button {
 }
 .column {
 	flex: 50%;
+}
+
+
+.eventHeader {
+	background: #18324D;
+	color: white;
+	border-radius: 5px 5px 0 0;
+	cursor: pointer;
+}
+.eventContent {
+	border: 1px solid #18324D;
+	border-top: none;
+	border-radius: 0 0 5px 5px;
+}
+.extraMargin {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+.eventContent {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+.eventHeader:hover {
+ 	background-color: grey;
+}
+
+.eventHeader:before {
+    content: '\02795\00A0\00A0'; /* Unicode character for "plus" sign (+) and unicode for spaces*/
+    font-size: 1em;
+    color: white;
+    margin-left: 1em;
+    display: inline-block;
+}
+.active:before {
+    content: "\2796\00A0\00A0"; /* Unicode character for "minus" sign (-) */
 }
