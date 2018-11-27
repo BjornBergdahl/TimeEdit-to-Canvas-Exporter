@@ -32,12 +32,14 @@ header {
 	background: #18324D;
 	color: white; 
 	margin-top: -1.5em;
-	text-align: center;
+	text-align: left;
+}
+h1 {
+	margin-left: .5em;
 }
 .centerWrapper {
 	max-width: 840px;
 	margin: 0 auto;
-	background: white;
 }
 main {
 	margin: 1em 1em;
