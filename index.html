@@ -13,6 +13,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -44,146 +46,149 @@
 		  		</div>
 			</form>
 
+			<button id="importButton" class="pasteButton">Import from TimeEdit</button>
 			<!--
 			<button class="pasteButton">Paste from Clipboard</button>
 			-->
 
-			<h3>Calendar Events:</h3>
+			<div class="hider">
+				<h3>Calendar Events:</h3>
 
-			<div id="formInserter"></div>
+				<div id="formInserter"></div>
 
-			<!-- Example of an imported Event -->
-			<div class="eventBox">
-				<div class="eventHeader">
-					Event Title
-				</div>
-				<div class="eventContent">
-					<div class="extraMargin">
-						<form action="ADDACTIONHERE" id="eventForm">
+				<!-- Example of an imported Event -->
+				<div class="eventBox">
+					<div class="eventHeader">
+						Event Title
+					</div>
+					<div class="eventContent">
+						<div class="extraMargin">
+							<form action="ADDACTIONHERE" id="eventForm">
 
-							<div class="row">
-								<div class="column">
-									Title:
+								<div class="row">
+									<div class="column">
+										Title:
+									</div>
+									<div class="column">
+										<input type="text" name="title">
+									</div>
 								</div>
-								<div class="column">
-									<input type="text" name="title">
+								
+								<div class="row">
+									<div class="column">
+										Start Date:
+									</div>
+									<div class="column">
+										<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
+									</div>
 								</div>
-							</div>
-							
-							<div class="row">
-								<div class="column">
-									Start Date:
-								</div>
-								<div class="column">
-									<input type="date" id="start" name="startDate" value="2020-01-01" min="2010-01-01" max="2099-01-01">
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="column">
-									Start Time:
+								<div class="row">
+									<div class="column">
+										Start Time:
+									</div>
+									<div class="column">
+										<input type="time" name="startTime">
+									</div>
 								</div>
-								<div class="column">
-									<input type="time" name="startTime">
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="column">
-									End Date:
+								<div class="row">
+									<div class="column">
+										End Date:
+									</div>
+									<div class="column">
+										<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
+									</div>
 								</div>
-								<div class="column">
-									<input type="date" id="end" name="endDate" value="2020-01-30" min="2010-01-01" max="2099-01-01">
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="column">
-									End Time:
+								<div class="row">
+									<div class="column">
+										End Time:
+									</div>
+									<div class="column">
+										<input type="time" name="endTime">
+									</div>
 								</div>
-								<div class="column">
-									<input type="time" name="endTime">
-								</div>
-							</div>
 
-							<div class="row">
-								<div class="column">
-									Location:
+								<div class="row">
+									<div class="column">
+										Location:
+									</div>
+									<div class="column">
+										<input type="text" name="location">
+									</div>
 								</div>
-								<div class="column">
-									<input type="text" name="location">
-								</div>
-							</div>
 
-							Description:
-							<textarea form="eventForm" name="description" class="fullWidth"></textarea>
-						</form>
+								Description:
+								<textarea form="eventForm" name="description" class="fullWidth"></textarea>
+							</form>
+						</div>
 					</div>
 				</div>
+
+				<h3>Canvas Access Settings:</h3>
+
+				<form>
+					<div class="row">
+						<div class="column">
+							Select Calendar by:
+						</div>
+						<div class="column">
+							<select id="selectCalendar" onchange="hideIrrelevant()">
+								<option value="LTU_ID">LTU ID</option>
+								<option value="Course_Code">Course Code</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row student">
+						<div class="column">
+							LTU ID:
+						</div>
+						<div class="column">
+							<input type="text" name="ltuId">
+						</div>
+					</div>
+
+					<div class ="row student">
+						<div class="column">
+							User ID:
+						</div>
+						<div class="column">
+							<input type="text" name="userId">
+						</div>
+					</div>
+
+					<div class="row course">
+						<div class="column">
+							Course Code:
+						</div>
+						<div class="column">
+							<input type="text" name="courseCode">
+						</div>
+					</div>
+
+					<div class="row course">
+						<div class="column">
+							Course ID:
+						</div>
+						<div class="column">
+							<input type="text" name="courseId">
+						</div>
+					</div>
+
+					Canvas Access Token:
+					<input type="text" name="accessToken" class="fullWidth">
+				</form>
+
+				<!--
+				<button class="pasteButton">Paste from Clipboard</button>
+				-->
+
+				<h3>Export Calendar Events to Canvas</h3>
+
+				<button id="submitButton">Submit all to Canvas</button>
 			</div>
-
-			<h3>Canvas Access Settings:</h3>
-
-			<form>
-				<div class="row">
-					<div class="column">
-						Select Calendar by:
-					</div>
-					<div class="column">
-						<select>
-							<option value="LTU_ID">LTU ID</option>
-							<option value="Course_Code">Course Code</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="column">
-						LTU ID:
-					</div>
-					<div class="column">
-						<input type="text" name="ltuId">
-					</div>
-				</div>
-
-				<div class ="row">
-					<div class="column">
-						User ID:
-					</div>
-					<div class="column">
-						<input type="text" name="userId">
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="column">
-						Course Code:
-					</div>
-					<div class="column">
-						<input type="text" name="courseCode">
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="column">
-						Course ID:
-					</div>
-					<div class="column">
-						<input type="text" name="courseId">
-					</div>
-				</div>
-
-				Canvas Access Token:
-				<input type="text" name="accessToken" class="fullWidth">
-			</form>
-
-			<!--
-			<button class="pasteButton">Paste from Clipboard</button>
-			-->
-
-			<h3>Export Calendar Events to Canvas</h3>
-
-			<button id="submitButton">Submit all to Canvas</button>
 		</main>
 	</div>
 

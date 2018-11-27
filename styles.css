@@ -148,3 +148,8 @@ button {
 .active:before {
     content: "\2796\00A0\00A0"; /* Unicode character for "minus" sign (-) */
 }
+
+/*
+.course {
+	display: none;
+}*/

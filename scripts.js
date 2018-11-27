@@ -13,3 +13,20 @@ for (i = 0; i < coll.length; i++) {
     } 
   });
 }
+
+$(".course").hide();
+/*$(".hider").hide();*/
+
+function hideIrrelevant() {
+  var sel = O("selectCalendar")
+  var selected = sel.options[sel.selectedIndex].value;
+  if (selected == "Course_Code") {
+    $(".student").hide();
+    $(".course").show();
+  }
+  else {
+    $(".student").show();
+    $(".course").hide();
+  }
+}
+
