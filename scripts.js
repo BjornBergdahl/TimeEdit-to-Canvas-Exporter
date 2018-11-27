@@ -1,3 +1,8 @@
+$(".course").hide();
+/*$(".hider").hide();*/
+
+generateForm();
+
 var coll = document.getElementsByClassName("eventHeader");
 var i;
 
@@ -14,9 +19,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-$(".course").hide();
-/*$(".hider").hide();*/
-
 function hideIrrelevant() {
   var sel = O("selectCalendar")
   var selected = sel.options[sel.selectedIndex].value;
@@ -30,3 +32,19 @@ function hideIrrelevant() {
   }
 }
 
+function generateForm() {
+  var eventBox = document.createElement("div");
+  eventBox.setAttribute('class', 'eventBox');
+
+  var eventTitle = document.createElement('div');
+  eventTitle.setAttribute('class', 'eventHeader');
+  eventTitle.innerHTML = "TITLE";
+
+  var eventContent = document.createElement("div");
+  eventContent.setAttribute('class', 'eventContent');
+
+  eventBox.append(eventTitle);
+  eventBox.append(eventContent);
+
+  O('formInserter').append(eventBox);
+}
