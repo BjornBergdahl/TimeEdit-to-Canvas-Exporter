@@ -38,7 +38,7 @@ function generateForm() {
 
   var eventTitle = document.createElement('div');
   eventTitle.setAttribute('class', 'eventHeader');
-  eventTitle.innerHTML = 'TITLE';
+  eventTitle.innerHTML = 'Event Title';
 
   var eventContent = document.createElement('div');
   eventContent.setAttribute('class', 'eventContent');
@@ -49,6 +49,13 @@ function generateForm() {
   var form = document.createElement('form');
   form.setAttribute('action', 'ADDACTIONHERE');
   form.setAttribute('id', 'eventForm');
+
+  eventBox.append(eventTitle);
+  eventBox.append(eventContent);
+
+  eventContent.append(extraMargin);
+
+  extraMargin.append(form);
 
   /* ----- ROWS AND COLUMNS ----- */
 
@@ -62,13 +69,6 @@ function generateForm() {
   var inp1 = document.createElement('input');
   inp1.setAttribute('type', 'text');
   inp1.setAttribute('name', 'title');
-
-  eventBox.append(eventTitle);
-  eventBox.append(eventContent);
-
-  eventContent.append(extraMargin);
-
-  extraMargin.append(form);
 
   form.append(row1);
   row1.append(col11);
