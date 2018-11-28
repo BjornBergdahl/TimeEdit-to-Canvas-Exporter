@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="styles.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -31,6 +32,8 @@
 
 			<h3>Import calendar Events from TimeEdit:</h3>
 
+			<p>Copy the URL from a TimeEdit calendar you wish to import from.</p>
+
 			<div id="TimeEditLink">
 				<a id="logoLink" href="https://cloud.timeedit.net/ltu/web/schedule1/ri1Q7.html#" target="_blank">
 					<span id="timeEditLogo">TE</span>
@@ -38,8 +41,9 @@
 				</a>
 			</div>
 
+			<p>Paste the URL here and click Import:</p>
+
 			<form>
-				Link to TimeEdit Calendar:<br>
 				<input type="text" name="link" class="fullWidth">
 				<div class="container">
 		  			<span class="lock"></span>
@@ -47,33 +51,35 @@
 			</form>
 
 			<div class="buttonWrapper">
-				<button id="importButton" class="pasteButton">Import from TimeEdit</button>
+				<button id="importButton" class="blueButton">Import</button>
 			</div>
-			<!--
-			<button class="pasteButton">Paste from Clipboard</button>
-			-->
 
 			<div class="hider">
 
 				<h3>Calendar Events:</h3>
 
+				<p>Edit your imported calendar events and send them to Canvas.</p>
+
 				<div id="formInserter"></div>
 
 				<div class="buttonWrapper">
-					<button id="submitButton">Send all to Canvas</button>
+					<button class="redButton">Delete all&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></button>
+					<button class="greenButton">Send all&nbsp;&nbsp;<i class="fas fa-paper-plane"></i></button>
 				</div>
 
 				<h3>Canvas Access Settings:</h3>
 
+				<p>Settings that grants access to a Canvas calendar.</p>
+
 				<form>
 					<div class="row">
 						<div class="column">
-							Select Calendar by:
+							Calendar type:
 						</div>
 						<div class="column">
 							<select id="selectCalendar" onchange="hideIrrelevant()">
-								<option value="LTU_ID">LTU ID</option>
-								<option value="Course_Code">Course Code</option>
+								<option value="user">User Calendar</option>
+								<option value="course">Course Calendar</option>
 							</select>
 						</div>
 					</div>
@@ -117,10 +123,6 @@
 					Canvas Access Token:
 					<input type="text" name="accessToken" class="fullWidth">
 				</form>
-
-				<!--
-				<button class="pasteButton">Paste from Clipboard</button>
-				-->
 			</div>
 		</main>
 	</div>

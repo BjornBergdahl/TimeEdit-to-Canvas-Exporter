@@ -99,19 +99,24 @@ button {
 	line-height: 2.25em;
 	cursor: pointer;
 	padding: 0 2em 0 2em;
+	margin: 0 0 1em 1em;
 }
 .buttonWrapper {
 	text-align: right;
 }
-.pasteButton {
+.blueButton {
 	background: #18324D;
 	border: 1px solid #18324D;
 }
-#submitButton {
-	background: green;
-	border: 1px solid green;
+.greenButton {
+	background: #1C6018;
+	border: 1px solid #1C6018;
 }
-.pasteButton:hover, #submitButton:hover {
+.redButton {
+	background: #751E20;
+	border: 1px solid #751E20;
+}
+.blueButton:hover, .greenButton:hover, .redButton:hover {
 	background: grey;
 	border-color: grey;
 }

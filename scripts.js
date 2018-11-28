@@ -23,7 +23,7 @@ for (i = 0; i < coll.length; i++) {
 function hideIrrelevant() {
   var sel = O("selectCalendar")
   var selected = sel.options[sel.selectedIndex].value;
-  if (selected == "Course_Code") {
+  if (selected == "course") {
     $(".student").hide();
     $(".course").show();
   }
@@ -79,6 +79,26 @@ function generateForm() {
   form.append(textarea);
 
   /* ----- /FIELDS ----- */
+
+  /* ----- BUTTONS ----- */
+
+  var buttonWrapper = document.createElement('div');
+  buttonWrapper.setAttribute('class', 'buttonWrapper');
+  
+  var deleteButton = document.createElement('button');
+  deleteButton.setAttribute('class', 'redButton');
+  deleteButton.innerHTML = "Delete&nbsp;&nbsp;<i class='fas fa-trash-alt'></i>";
+
+  var sendButton = document.createElement('button');
+  sendButton.setAttribute('class', 'greenButton');
+  sendButton.innerHTML = "Send&nbsp;&nbsp;<i class='fas fa-paper-plane'></i>";
+
+  buttonWrapper.append(deleteButton);
+  buttonWrapper.append(sendButton);
+
+  form.append(buttonWrapper);
+
+  /* ----- /BUTTONS ----- */
 
   O('formInserter').append(eventBox);
 }
