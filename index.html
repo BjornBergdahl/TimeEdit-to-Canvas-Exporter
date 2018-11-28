@@ -22,15 +22,18 @@
 
 	<header>
 		<div class="centerWrapper">
+			<div class="extraMargin">
 			<h1>TimeEdit to Canvas exporter</h1>
+			<p> Export your TimeEdit calendar to Canvas in 3 simple steps!</p>
 			<div class="divider"></div>
+			</div>
 		</div>
 	</header>
 
 	<div class="centerWrapper">
 		<main>
 
-			<h3>Import calendar Events from TimeEdit:</h3>
+			<h3>1) Import calendar Events from TimeEdit:</h3>
 
 			<p>Copy the URL from a TimeEdit calendar you wish to import from.</p>
 
@@ -54,76 +57,82 @@
 				<button id="importButton" class="blueButton">Import</button>
 			</div>
 
-			<div class="hider">
 
-				<h3>Calendar Events:</h3>
+			<h3>2) Canvas Access Settings:</h3>
 
-				<p>Edit your imported calendar events and send them to Canvas.</p>
+			<p>Enter settings that grants access to a Canvas calendar.</p>
 
-				<div id="formInserter"></div>
-
-				<div class="buttonWrapper">
-					<button class="redButton">Delete all&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></button>
-					<button class="greenButton">Send all&nbsp;&nbsp;<i class="fas fa-paper-plane"></i></button>
+			<form>
+				<div class="row">
+					<div class="column">
+						Calendar type:
+					</div>
+					<div class="column">
+						<select id="selectCalendar" onchange="hideIrrelevant()">
+							<option value="user">User Calendar</option>
+							<option value="course">Course Calendar</option>
+						</select>
+					</div>
 				</div>
 
-				<h3>Canvas Access Settings:</h3>
-
-				<p>Settings that grants access to a Canvas calendar.</p>
-
-				<form>
-					<div class="row">
-						<div class="column">
-							Calendar type:
-						</div>
-						<div class="column">
-							<select id="selectCalendar" onchange="hideIrrelevant()">
-								<option value="user">User Calendar</option>
-								<option value="course">Course Calendar</option>
-							</select>
-						</div>
+				<div class="row student">
+					<div class="column">
+						LTU ID:
 					</div>
-
-					<div class="row student">
-						<div class="column">
-							LTU ID:
-						</div>
-						<div class="column">
-							<input type="text" name="ltuId">
-						</div>
+					<div class="column">
+						<input type="text" name="ltuId">
 					</div>
+				</div>
 
-					<div class ="row student">
-						<div class="column">
-							User ID:
-						</div>
-						<div class="column">
-							<input type="text" name="userId" disabled>
-						</div>
+				<div class ="row student">
+					<div class="column">
+						User ID:
 					</div>
-
-					<div class="row course">
-						<div class="column">
-							Course Code:
-						</div>
-						<div class="column">
-							<input type="text" name="courseCode">
-						</div>
+					<div class="column">
+						<input type="text" name="userId" disabled>
 					</div>
+				</div>
 
-					<div class="row course">
-						<div class="column">
-							Course ID:
-						</div>
-						<div class="column">
-							<input type="text" name="courseId" disabled>
-						</div>
+				<div class="row course">
+					<div class="column">
+						Course Code:
 					</div>
+					<div class="column">
+						<input type="text" name="courseCode">
+					</div>
+				</div>
 
-					Canvas Access Token:
-					<input type="text" name="accessToken" class="fullWidth">
-				</form>
+				<div class="row course">
+					<div class="column">
+						Course ID:
+					</div>
+					<div class="column">
+						<input type="text" name="courseId" disabled>
+					</div>
+				</div>
+
+				Canvas Access Token:
+				<input type="text" name="accessToken" class="fullWidth">
+			</form>
+
+
+			<h3>3) Calendar Events:</h3>
+
+			<p>Edit your imported calendar events and send them to Canvas.</p>
+
+			<div id="formInserter"></div>
+
+			<div class="buttonWrapper">
+				<button class="redButton">Delete all&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></button>
+				<button class="greenButton">Send all&nbsp;&nbsp;<i class="fas fa-paper-plane"></i></button>
 			</div>
+
+
+			<h3>Done!</h3>
+
+			<p>You have no more calendar events left to send.</p>
+
+			<p>Press your browser's update button or hit F5 to export another calendar.</p>
 		</main>
 	</div>
 
