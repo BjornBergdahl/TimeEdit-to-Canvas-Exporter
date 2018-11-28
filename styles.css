@@ -36,6 +36,7 @@ header {
 }
 h1 {
 	margin-left: .5em;
+	font-size: 1.75em;
 }
 .centerWrapper {
 	max-width: 840px;
@@ -55,13 +56,16 @@ input, select, textarea {
 input, select {
 	width: 100%;
 	max-width: 250px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+}
+input, select, textarea {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     padding-left: .75em;
 }
 textarea {
 	height: 5em;
+	padding: .75em;
 }
 .fullWidth {
 	width: 100%;

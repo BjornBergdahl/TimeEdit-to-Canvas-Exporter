@@ -2,6 +2,7 @@ $(".course").hide();
 /*$(".hider").hide();*/
 
 generateForm();
+generateForm();
 
 var coll = document.getElementsByClassName("eventHeader");
 var i;
@@ -57,25 +58,45 @@ function generateForm() {
 
   extraMargin.append(form);
 
-  /* ----- ROWS AND COLUMNS ----- */
+  /* ----- FIELDS ----- */
 
-  var row1 = document.createElement('div');
-  row1.setAttribute('class', 'row');
-  var col11 = document.createElement('div');
-  col11.setAttribute('class', 'column');
-  col11.innerHTML = 'Title:';
-  var col12 = document.createElement('div');
-  col12.setAttribute('class', 'column');
-  var inp1 = document.createElement('input');
-  inp1.setAttribute('type', 'text');
-  inp1.setAttribute('name', 'title');
+  generateFormRow(form, 'Title:', 'title');
+  generateFormRow(form, 'Start Date:', 'startDate');
+  generateFormRow(form, 'Start Time:', 'startTime');
+  generateFormRow(form, 'End Date:', 'endDate');
+  generateFormRow(form, 'End Time:', 'endTime');
+  generateFormRow(form, 'Location:', 'location');
 
-  form.append(row1);
-  row1.append(col11);
-  row1.append(col12)
-  col12.append(inp1);
+  var label = document.createElement('label');
+  label.innerHTML = "Description:"
 
+  var textarea = document.createElement('textarea');
+  textarea.setAttribute('form', 'eventForm');
+  textarea.setAttribute('name', 'description');
+  textarea.setAttribute('class', 'fullWidth');
 
+  form.append(label);
+  form.append(textarea);
+
+  /* ----- /FIELDS ----- */
 
   O('formInserter').append(eventBox);
+}
+
+function generateFormRow(form, text, name) {
+  var row = document.createElement('div');
+  row.setAttribute('class', 'row');
+  var col1 = document.createElement('div');
+  col1.setAttribute('class', 'column');
+  col1.innerHTML = text;
+  var col2 = document.createElement('div');
+  col2.setAttribute('class', 'column');
+  var inp = document.createElement('input');
+  inp.setAttribute('type', 'text');
+  inp.setAttribute('name', name);
+
+  form.append(row);
+  row.append(col1);
+  row.append(col2)
+  col2.append(inp);
 }
