@@ -33,18 +33,49 @@ function hideIrrelevant() {
 }
 
 function generateForm() {
-  var eventBox = document.createElement("div");
+  var eventBox = document.createElement('div');
   eventBox.setAttribute('class', 'eventBox');
 
   var eventTitle = document.createElement('div');
   eventTitle.setAttribute('class', 'eventHeader');
-  eventTitle.innerHTML = "TITLE";
+  eventTitle.innerHTML = 'TITLE';
 
-  var eventContent = document.createElement("div");
+  var eventContent = document.createElement('div');
   eventContent.setAttribute('class', 'eventContent');
+
+  var extraMargin = document.createElement('div');
+  extraMargin.setAttribute('class', 'extraMargin');
+
+  var form = document.createElement('form');
+  form.setAttribute('action', 'ADDACTIONHERE');
+  form.setAttribute('id', 'eventForm');
+
+  /* ----- ROWS AND COLUMNS ----- */
+
+  var row1 = document.createElement('div');
+  row1.setAttribute('class', 'row');
+  var col11 = document.createElement('div');
+  col11.setAttribute('class', 'column');
+  col11.innerHTML = 'Title:';
+  var col12 = document.createElement('div');
+  col12.setAttribute('class', 'column');
+  var inp1 = document.createElement('input');
+  inp1.setAttribute('type', 'text');
+  inp1.setAttribute('name', 'title');
 
   eventBox.append(eventTitle);
   eventBox.append(eventContent);
+
+  eventContent.append(extraMargin);
+
+  extraMargin.append(form);
+
+  form.append(row1);
+  row1.append(col11);
+  row1.append(col12)
+  col12.append(inp1);
+
+
 
   O('formInserter').append(eventBox);
 }
