@@ -33,7 +33,7 @@
 	<div class="centerWrapper">
 		<main>
 
-			<div class="sunken">
+			<div class="card">
 				<h3>1) Import calendar Events from TimeEdit:</h3>
 
 				<p>Copy the URL from a TimeEdit calendar you wish to import from.</p>
@@ -55,7 +55,7 @@
 				</form>
 
 				<div class="buttonWrapper">
-					<button id="importButton" class="blueButton">Import</button>
+					<button id="importButton" class="blueButton">Import&nbsp;&nbsp;<i class="fas fa-download"></i></button>
 				</div>
 			</div>
 
@@ -117,6 +117,10 @@
 					Canvas Access Token:
 					<input type="text" name="accessToken" class="fullWidth">
 				</form>
+
+				<div class="buttonWrapper">
+					<button id="importButton" class="blueButton">Confirm Settings</button>
+				</div>
 			</div>
 
 			<div class="card">
@@ -137,7 +141,9 @@
 
 				<p>You have no more calendar events left to send.</p>
 
-				<p>Press your browser's refresh button or hit F5 to export another calendar.</p>
+				<div class="buttonWrapper">
+					<button id="importButton" class="blueButton">Export another calendar&nbsp;&nbsp;<i class="fas fa-plus-square"></i></button>
+				</div>
 			</div>
 		</main>
 	</div>
