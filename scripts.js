@@ -1,38 +1,58 @@
 $(".course").hide();
-/*$(".hider").hide();*/
+loadFile("https://cloud.timeedit.net/ltu/web/schedule1/ri167XQQ505Z50Qv8Q093gZ6y5Y320976Y75Y.json", createEvents, "New message!\n\n");
 
-generateForm();
-generateForm();
 
-var coll = document.getElementsByClassName("eventHeader");
-var i;
+function makeEventsClickable() {
+  var coll = document.getElementsByClassName("eventHeader");
+  var i;
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } 
-    else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } 
+      else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } 
+    });
+  }
 }
 
-/* ----- /TESTING GET ----- */
-function showMessage(message) {
+function createEvents(message) {
     console.log(message + this.responseText);
-
-    /*console.log(this.responseText);*/
 
     var obj = JSON.parse(this.responseText);
 
-    console.log(obj.reservations[0].id);
-}
+    var courses = obj.reservations;
+    
+    for (i = 0; i < courses.length; i++) {
+      c = courses[i];
+      var place = c.columns[1];
 
-loadFile("https://cloud.timeedit.net/ltu/web/schedule1/ri167XQQ505Z50Qv8Q093gZ6y5Y320976Y75Y.json", showMessage, "New message!\n\n");
-/* ----- /TESTING GET ----- */
+      // Makes description from other attributes
+      var desc = "";
+      for (j = 0; j < c.columns.length; j++) {
+        // If attrubute is not location (already used for Canvas field)
+        value = c.columns[j];
+        if (j != 1) {
+          if (value != "") {
+            if (desc != "") {
+              desc = desc + " - " + value;
+            }
+            else {
+              desc = desc + c.columns[j];
+            }
+          }
+        }
+      }
+
+      generateForm(c.id, "", c.startdate, c.starttime, c.enddate, c.endtime, place, desc);
+    }
+
+    makeEventsClickable();
+}
 
 function hideIrrelevant() {
   var sel = O("selectCalendar")
@@ -47,13 +67,13 @@ function hideIrrelevant() {
   }
 }
 
-function generateForm() {
+function generateForm(id, title, startDate, startTime, endDate, endTime, location, description) {
   var eventBox = document.createElement('div');
   eventBox.setAttribute('class', 'eventBox');
 
   var eventTitle = document.createElement('div');
   eventTitle.setAttribute('class', 'eventHeader');
-  eventTitle.innerHTML = 'Event Title';
+  eventTitle.innerHTML = id;
 
   var eventContent = document.createElement('div');
   eventContent.setAttribute('class', 'eventContent');
@@ -73,21 +93,21 @@ function generateForm() {
   extraMargin.append(form);
 
   /* ----- FIELDS ----- */
-
-  generateFormRow(form, 'Title:', 'title');
-  generateFormRow(form, 'Start Date:', 'startDate');
-  generateFormRow(form, 'Start Time:', 'startTime');
-  generateFormRow(form, 'End Date:', 'endDate');
-  generateFormRow(form, 'End Time:', 'endTime');
-  generateFormRow(form, 'Location:', 'location');
+  generateFormRow(form, 'Title:', 'title', title);
+  generateFormRow(form, 'Start Date:', 'startDate', startDate);
+  generateFormRow(form, 'Start Time:', 'startTime', startTime);
+  generateFormRow(form, 'End Date:', 'endDate', endDate);
+  generateFormRow(form, 'End Time:', 'endTime', endTime);
+  generateFormRow(form, 'Location:', 'location', location);
 
   var label = document.createElement('label');
   label.innerHTML = "Description:"
 
   var textarea = document.createElement('textarea');
   textarea.setAttribute('form', 'eventForm');
-  textarea.setAttribute('name', 'description');
+  textarea.setAttribute('placeholder', description);
   textarea.setAttribute('class', 'fullWidth');
+  textarea.setAttribute('value', 'TEST');
 
   form.append(label);
   form.append(textarea);
@@ -117,7 +137,7 @@ function generateForm() {
   O('formInserter').append(eventBox);
 }
 
-function generateFormRow(form, text, name) {
+function generateFormRow(form, text, name, value) {
   var row = document.createElement('div');
   row.setAttribute('class', 'row');
   var col1 = document.createElement('div');
@@ -128,6 +148,7 @@ function generateFormRow(form, text, name) {
   var inp = document.createElement('input');
   inp.setAttribute('type', 'text');
   inp.setAttribute('name', name);
+  inp.setAttribute('value', value);
 
   form.append(row);
   row.append(col1);
