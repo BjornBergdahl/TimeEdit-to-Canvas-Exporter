@@ -153,7 +153,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
 
   var textarea = document.createElement('textarea');
   textarea.setAttribute('form', 'eventForm');
-  textarea.setAttribute('placeholder', description);
+  textarea.innerHTML = description;
   textarea.setAttribute('class', 'fullWidth');
   textarea.setAttribute('value', 'TEST');
 
