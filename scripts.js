@@ -29,6 +29,12 @@ function confirmSettings() {
   displayStep(["third"]);
 }
 
+function deleteEvent(link) {
+  alert("delete button pressed");
+  /*link.parentNode.parentNode.parentNode.classList.add("sunken");*/
+  link.parentNode.parentNode.parentNode.remove();
+}
+
 function makeEventsClickable() {
   var coll = document.getElementsByClassName("eventHeader");
   var i;
@@ -155,6 +161,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   var deleteButton = document.createElement('button');
   deleteButton.setAttribute('class', 'redButton');
   deleteButton.innerHTML = "Delete&nbsp;&nbsp;<i class='fas fa-trash-alt'></i>";
+  deleteButton.setAttribute("onclick", "deleteEvent(this)");
 
   var sendButton = document.createElement('button');
   sendButton.setAttribute('class', 'greenButton');
@@ -163,7 +170,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   buttonWrapper.append(deleteButton);
   buttonWrapper.append(sendButton);
 
-  form.append(buttonWrapper);
+  eventContent.append(buttonWrapper);
 
   /* ----- /BUTTONS ----- */
 
@@ -196,7 +203,7 @@ function xhrSuccess() {
 
 function xhrError() { 
     console.error(this.statusText);
-    alert("URL could not be loaded");
+    alert("Not a valid URL");
 }
 
 function loadFile(url, callback /*, opt_arg1, opt_arg2, ... */) {
