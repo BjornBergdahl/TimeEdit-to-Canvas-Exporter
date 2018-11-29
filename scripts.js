@@ -1,6 +1,29 @@
 $(".course").hide();
-loadFile("https://cloud.timeedit.net/ltu/web/schedule1/ri167XQQ505Z50Qv8Q093gZ6y5Y320976Y75Y.json", createEvents, "New message!\n\n");
+displayStep("first");
 
+function displayStep(step) {
+  O('first').classList.add("sunken");
+  O('second').classList.add("sunken");
+  O('third').classList.add("sunken");
+  O('fourth').classList.add("sunken");
+
+  O(step).classList.add("card");
+  O(step).classList.remove("sunken");
+}
+
+function importCalendar() {
+  var URL = O("calendarURL").value;
+  // If URL is .html, changes extension to .json
+  if (URL.slice(-5) === ".html") {
+    URL = URL.substring(0, URL.length - 5);
+    URL = URL + ".json";
+  }
+  loadFile(URL, createEvents, "New message!\n\n");
+}
+
+function confirmSettings() {
+
+}
 
 function makeEventsClickable() {
   var coll = document.getElementsByClassName("eventHeader");
@@ -24,6 +47,10 @@ function createEvents(message) {
     console.log(message + this.responseText);
 
     var obj = JSON.parse(this.responseText);
+
+    if (this.responseText != null) {
+      displayStep('second');
+    }
 
     var courses = obj.reservations;
     
@@ -52,6 +79,8 @@ function createEvents(message) {
     }
 
     makeEventsClickable();
+
+    alert(courses.length + " Calendar Events imported!")
 }
 
 function hideIrrelevant() {
@@ -163,6 +192,7 @@ function xhrSuccess() {
 
 function xhrError() { 
     console.error(this.statusText);
+    alert("URL could not be loaded");
 }
 
 function loadFile(url, callback /*, opt_arg1, opt_arg2, ... */) {

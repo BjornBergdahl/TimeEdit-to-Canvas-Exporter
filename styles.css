@@ -57,6 +57,9 @@ input, select {
 	width: 100%;
 	max-width: 250px;
 }
+option {
+	font-size: 1.25em;
+}
 input, select, textarea {
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -179,4 +182,5 @@ button {
 	border: 1px solid lightgrey;
 	padding: 1em;
 	background: #F2F2F2;
+	/*display: none;*/ /* REMOVE IF YOU WANT ALL STEPS TO SHOW */
 }
