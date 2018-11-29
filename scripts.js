@@ -33,6 +33,17 @@ function deleteEvent(link) {
   link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
+function deleteAllEvents() {
+
+  alert("delete ALL");
+
+  var paras = document.getElementsByClassName('eventBox');
+
+  while(paras[0]) {
+    paras[0].parentNode.removeChild(paras[0]);
+  }
+}
+
 function makeEventsClickable() {
   var coll = document.getElementsByClassName("eventHeader");
   var i;
@@ -57,7 +68,7 @@ function createEvents(message) {
     var obj = JSON.parse(this.responseText);
 
     if (this.responseText != null) {
-      displayStep(['second', 'third']);
+      displayStep(['first', 'second', 'third']);
     }
 
     var courses = obj.reservations;
