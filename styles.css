@@ -182,5 +182,5 @@ button {
 	border: 1px solid lightgrey;
 	padding: 1em;
 	background: #F2F2F2;
-	/*display: none;*/ /* REMOVE IF YOU WANT ALL STEPS TO SHOW */
+	display: none; /* REMOVE IF YOU WANT ALL STEPS TO SHOW */
 }

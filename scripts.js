@@ -1,14 +1,17 @@
 $(".course").hide();
-displayStep("first");
+displayStep(["first"]);
 
-function displayStep(step) {
+function displayStep(stepList) {
   O('first').classList.add("sunken");
   O('second').classList.add("sunken");
   O('third').classList.add("sunken");
   O('fourth').classList.add("sunken");
 
-  O(step).classList.add("card");
-  O(step).classList.remove("sunken");
+  for (i = 0; i < stepList.length; i++) {
+    step = stepList[i];
+    O(step).classList.add("card");
+    O(step).classList.remove("sunken");
+  }
 }
 
 function importCalendar() {
@@ -22,7 +25,8 @@ function importCalendar() {
 }
 
 function confirmSettings() {
-
+  alert("works");
+  displayStep(["third"]);
 }
 
 function makeEventsClickable() {
@@ -49,7 +53,7 @@ function createEvents(message) {
     var obj = JSON.parse(this.responseText);
 
     if (this.responseText != null) {
-      displayStep('second');
+      displayStep(['second', 'third']);
     }
 
     var courses = obj.reservations;
@@ -75,7 +79,7 @@ function createEvents(message) {
         }
       }
 
-      generateForm(c.id, "", c.startdate, c.starttime, c.enddate, c.endtime, place, desc);
+      generateForm(c.id, c.id, c.startdate, c.starttime, c.enddate, c.endtime, place, desc);
     }
 
     makeEventsClickable();
