@@ -20,6 +20,20 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
+/* ----- /TESTING GET ----- */
+function showMessage(message) {
+    console.log(message + this.responseText);
+
+    /*console.log(this.responseText);*/
+
+    var obj = JSON.parse(this.responseText);
+
+    console.log(obj.reservations[0].id);
+}
+
+loadFile("https://cloud.timeedit.net/ltu/web/schedule1/ri167XQQ505Z50Qv8Q093gZ6y5Y320976Y75Y.json", showMessage, "New message!\n\n");
+/* ----- /TESTING GET ----- */
+
 function hideIrrelevant() {
   var sel = O("selectCalendar")
   var selected = sel.options[sel.selectedIndex].value;
@@ -119,4 +133,23 @@ function generateFormRow(form, text, name) {
   row.append(col1);
   row.append(col2)
   col2.append(inp);
+}
+
+
+function xhrSuccess() { 
+    this.callback.apply(this, this.arguments); 
+}
+
+function xhrError() { 
+    console.error(this.statusText);
+}
+
+function loadFile(url, callback /*, opt_arg1, opt_arg2, ... */) {
+    var xhr = new XMLHttpRequest();
+    xhr.callback = callback;
+    xhr.arguments = Array.prototype.slice.call(arguments, 2);
+    xhr.onload = xhrSuccess;
+    xhr.onerror = xhrError;
+    xhr.open("GET", url, true);
+    xhr.send(null);
 }
