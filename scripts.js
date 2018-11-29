@@ -30,9 +30,7 @@ function confirmSettings() {
 }
 
 function deleteEvent(link) {
-  alert("delete button pressed");
-  /*link.parentNode.parentNode.parentNode.classList.add("sunken");*/
-  link.parentNode.parentNode.parentNode.remove();
+  link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
 function makeEventsClickable() {
@@ -170,7 +168,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   buttonWrapper.append(deleteButton);
   buttonWrapper.append(sendButton);
 
-  eventContent.append(buttonWrapper);
+  form.append(buttonWrapper);
 
   /* ----- /BUTTONS ----- */
 
