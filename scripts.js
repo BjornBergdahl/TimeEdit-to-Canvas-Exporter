@@ -35,27 +35,21 @@ function deleteEvent(link) {
 
 function postTest() {
 
-  var data = null;
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://ltu.instructure.com/api/v1/calendar_events.json?calendar_event[context_code]=user_55647&calendar_event[title]=API%20Test%21&calendar_event[start_at]=2018-11-23T17:00:00Z&calendar_event[end_at]=2018-11-23T20:00:00Z&calendar_event[location_name]=LOCATION%20HERE&calendar_event[description]=DESCRIPTION%20HERE",
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si",
+    "cache-control": "no-cache",
+    "Postman-Token": "de98361e-ccc5-49b8-a8aa-850091dbc355"
+  }
+}
 
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
-
-  xhr.open("POST", "https://ltu.instructure.com/api/v1/calendar_events.json?calendar_event[context_code]=user_55647&calendar_event[title]=API%20Test%21&calendar_event[start_at]=2018-11-23T17:00:00Z&calendar_event[end_at]=2018-11-23T20:00:00Z&calendar_event[location_name]=LOCATION%20HERE&calendar_event[description]=DESCRIPTION%20HERE");
-  xhr.setRequestHeader("Authorization", "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si");
-  xhr.setRequestHeader("cache-control", "no-cache");
-  xhr.setRequestHeader("Postman-Token", "5479f8e6-249f-486b-9043-8497880767b3");
-  xhr.setRequestHeader('Access-Control-Allow-Origin', "https://dashboard.heroku.com/apps/");
-  xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
-  xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-  xhr.send(data);
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 
 }
 
