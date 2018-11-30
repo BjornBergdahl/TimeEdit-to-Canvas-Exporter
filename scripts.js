@@ -50,7 +50,10 @@ function postTest() {
   xhr.setRequestHeader("Authorization", "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si");
   xhr.setRequestHeader("cache-control", "no-cache");
   xhr.setRequestHeader("Postman-Token", "5479f8e6-249f-486b-9043-8497880767b3");
-  xhr.setRequestHeader('Access-Control-Allow-Origin', "https://dashboard.heroku.com/apps/time-edit-to-canvas");
+  xhr.setRequestHeader('Access-Control-Allow-Origin', "https://dashboard.heroku.com/apps/");
+  xhr.setRequestHeader('Access-Control-Allow-Credentials', 'true');
+  xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  xhr.setRequestHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
   xhr.send(data);
 
