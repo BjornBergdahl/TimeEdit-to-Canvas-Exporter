@@ -43,7 +43,11 @@ function postTest() {
     "headers": {
       "Authorization": "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si",
       "cache-control": "no-cache",
-      "Postman-Token": "68d52520-bb6c-4d6f-a74e-947f40c0e483"
+      "Postman-Token": "68d52520-bb6c-4d6f-a74e-947f40c0e483",
+      "Access-Control-Allow-Origin": '*',
+      "Access-Control-Allow-Credentials": "true",
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS',
+      "Access-Control-Allow-Headers": 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json'
     }
   }
 
