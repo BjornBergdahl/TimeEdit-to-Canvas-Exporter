@@ -33,9 +33,25 @@ function deleteEvent(link) {
   link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
-function deleteAllEvents() {
+function sendEvent(link) {
+  var title = link.parentNode.parentNode.querySelectorAll("*[name='title']")[0].value;
+  var startDate = link.parentNode.parentNode.querySelectorAll("*[name='startDate']")[0].value;
+  var startTime = link.parentNode.parentNode.querySelectorAll("*[name='startTime']")[0].value;
+  var endDate = link.parentNode.parentNode.querySelectorAll("*[name='endDate']")[0].value;
+  var endTime = link.parentNode.parentNode.querySelectorAll("*[name='endTime']")[0].value;
+  var location  = link.parentNode.parentNode.querySelectorAll("*[name='location']")[0].value;
+  var description  = link.parentNode.parentNode.querySelectorAll("*[name='description']")[0].innerHTML;
+  
+  alert(title);  
+  alert(startDate);
+  alert(startTime);
+  alert(endDate);
+  alert(endTime);
+  alert(location);
+  alert(description);
+}
 
-  alert("delete ALL");
+function deleteAllEvents() {
 
   var paras = document.getElementsByClassName('eventBox');
 
@@ -130,7 +146,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   extraMargin.setAttribute('class', 'extraMargin');
 
   var form = document.createElement('form');
-  form.setAttribute('action', 'ADDACTIONHERE');
+  form.setAttribute('action', 'javascript:void(0);');
   form.setAttribute('id', 'eventForm');
 
   eventBox.append(eventTitle);
@@ -155,7 +171,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   textarea.setAttribute('form', 'eventForm');
   textarea.innerHTML = description;
   textarea.setAttribute('class', 'fullWidth');
-  textarea.setAttribute('value', 'TEST');
+  textarea.setAttribute('name', 'description');
 
   form.append(label);
   form.append(textarea);
@@ -175,6 +191,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
   var sendButton = document.createElement('button');
   sendButton.setAttribute('class', 'greenButton');
   sendButton.innerHTML = "Send&nbsp;&nbsp;<i class='fas fa-paper-plane'></i>";
+  sendButton.setAttribute("onclick", "sendEvent(this)");
 
   buttonWrapper.append(deleteButton);
   buttonWrapper.append(sendButton);
