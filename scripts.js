@@ -40,7 +40,7 @@ function sendEvent(link) {
   var endDate = link.parentNode.parentNode.querySelectorAll("*[name='endDate']")[0].value;
   var endTime = link.parentNode.parentNode.querySelectorAll("*[name='endTime']")[0].value;
   var location  = link.parentNode.parentNode.querySelectorAll("*[name='location']")[0].value;
-  var description  = link.parentNode.parentNode.querySelectorAll("*[name='description']")[0].innerHTML;
+  var description  = link.parentNode.parentNode.querySelectorAll("*[name='description']")[0].value;
   
   alert(title);  
   alert(startDate);
