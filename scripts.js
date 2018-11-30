@@ -33,6 +33,20 @@ function deleteEvent(link) {
   link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
+function postTest() {
+  /*
+  $.ajax({
+    url: 'https://ltu.instructure.com/api/v1/calendar_events.json',
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader("Authorization", "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si");
+    }, success: function(data){
+      alert(data);
+      //process the JSON data etc
+    }
+  }
+  */
+}
+
 function sendEvent(link) {
   var title = link.parentNode.parentNode.querySelectorAll("*[name='title']")[0].value;
   var startDate = link.parentNode.parentNode.querySelectorAll("*[name='startDate']")[0].value;
@@ -48,6 +62,8 @@ function sendEvent(link) {
   alert(title);  
   alert(start_at);
   alert(end_at); 
+
+  postTest();
 
   /* deleteEvent(link);*/
 }
