@@ -41,14 +41,15 @@ function sendEvent(link) {
   var endTime = link.parentNode.parentNode.querySelectorAll("*[name='endTime']")[0].value;
   var location  = link.parentNode.parentNode.querySelectorAll("*[name='location']")[0].value;
   var description  = link.parentNode.parentNode.querySelectorAll("*[name='description']")[0].value;
-  
+
+  var start_at = startDate + 'T' + startTime + ':00Z';
+  var end_at = endDate + 'T' + endTime + ':00Z';
+
   alert(title);  
-  alert(startDate);
-  alert(startTime);
-  alert(endDate);
-  alert(endTime);
-  alert(location);
-  alert(description);
+  alert(start_at);
+  alert(end_at); 
+
+  /* deleteEvent(link);*/
 }
 
 function deleteAllEvents() {
