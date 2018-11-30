@@ -34,17 +34,23 @@ function deleteEvent(link) {
 }
 
 function postTest() {
-  /*
-  $.ajax({
-    url: 'https://ltu.instructure.com/api/v1/calendar_events.json',
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si");
-    }, success: function(data){
-      alert(data);
-      //process the JSON data etc
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://ltu.instructure.com/api/v1/calendar_events.json?calendar_event[context_code]=user_55647&calendar_event[title]=API%20Test%21&calendar_event[start_at]=2018-11-23T17:00:00Z&calendar_event[end_at]=2018-11-23T20:00:00Z&calendar_event[location_name]=LOCATION%20HERE&calendar_event[description]=DESCRIPTION%20HERE",
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si",
+      "cache-control": "no-cache",
+      "Postman-Token": "68d52520-bb6c-4d6f-a74e-947f40c0e483"
     }
   }
-  */
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+
 }
 
 function sendEvent(link) {
