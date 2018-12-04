@@ -5,6 +5,7 @@ from .serializers import EventExportSerializer
 from requests import *
 import requests
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 # Unnecessary
@@ -48,10 +49,12 @@ def postCalendarEvent(user, token, title, description, start_date, start_time, e
     print(r.text)
 
 
-
+# remove this token in production
+@csrf_exempt
 def test(request):
     print('test called')
 
+    """
     user = '55647'
     token = '3755~uRL5P97uVze67EAc4DXf01lA9zQ74tCbGCtz2MM9vRTKKcbaHGDrdWf0AczQ9NZP'
 
@@ -62,7 +65,23 @@ def test(request):
     end_date = '2018-11-23'
     end_time = '20:00'
     location = 'location test'
+    """
 
-    postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+    if request.method == 'POST':
+        # postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+        user = request.POST.get('user', '')
+        token = request.POST.get('token', '')
+
+        title = request.POST.get('title', '')
+        description = request.POST.get('description', '')
+        start_date = request.POST.get('start_date', '')
+        start_time = request.POST.get('start_time', '')
+        end_date = request.POST.get('end_date', '')
+        end_time = request.POST.get('end_time', '')
+        location = request.POST.get('location', '')
+
+        print(user, " ", token, " ", "va")
+        postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+        print("YUP")
     
     return HttpResponse('Test HTTPResponse here')
