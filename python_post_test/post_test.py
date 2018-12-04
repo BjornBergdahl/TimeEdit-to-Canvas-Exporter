@@ -14,8 +14,34 @@ class HTTPBearerAuth(requests.auth.AuthBase):
         r.headers['Authorization'] = 'Bearer ' + self.token
         return r
 
-URI = 'https://ltu.instructure.com/api/v1/calendar_events.json'
-payload = {'calendar_event[context_code]': 'user_55647', 'calendar_event[title]': 'Python test!', 'calendar_event[start_at]': '2018-11-23T17:00:00Z', 'calendar_event[end_at]': '2018-11-23T20:00:00Z'}
-az = HTTPBearerAuth('3755~uRL5P97uVze67EAc4DXf01lA9zQ74tCbGCtz2MM9vRTKKcbaHGDrdWf0AczQ9NZP')
-r = requests.post(URI, data=payload, auth=az)
-print(r.text)
+
+def postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location):
+
+    URI = 'https://ltu.instructure.com/api/v1/calendar_events.json'
+    
+    payload = {'calendar_event[context_code]': 'user_' + user, \
+               'calendar_event[title]': title, \
+               'calendar_event[description]': description, \
+               'calendar_event[start_at]': start_date + 'T' + start_time + ':00Z', \
+               'calendar_event[end_at]': end_date + 'T' + end_time + ':00Z', \
+               'calendar_event[location_name]': location}
+
+    az = HTTPBearerAuth(token)
+    r = requests.post(URI, data=payload, auth=az)
+    print(r.text)
+
+
+if __name__ == '__main__':
+    user = '55647'
+    token = '3755~uRL5P97uVze67EAc4DXf01lA9zQ74tCbGCtz2MM9vRTKKcbaHGDrdWf0AczQ9NZP'
+
+    title = 'Python test!'
+    description = 'description test'
+    start_date = '2018-11-23'
+    start_time = '17:00'
+    end_date = '2018-11-23'
+    end_time = '20:00'
+    location = 'location test'
+
+    postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+    
