@@ -33,7 +33,8 @@ function deleteEvent(link) {
   link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
-function postTest() {
+function postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description) {
+  
 }
 
 function sendEvent(link) {
@@ -63,7 +64,7 @@ function sendEvent(link) {
   alert(location);
   alert(description);
 
-  postTest();
+  postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description);
 }
 
 function deleteAllEvents() {
