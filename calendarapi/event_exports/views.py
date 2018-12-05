@@ -24,7 +24,7 @@ class HTTPBearerAuth(requests.auth.AuthBase):
         return r
 
 
-def postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location):
+def createCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location):
 
     URI = 'https://ltu.instructure.com/api/v1/calendar_events.json'
     
@@ -60,6 +60,6 @@ def calendarevent(request):
         end_time = received.get('end_time', '')
         location = received.get('location', '')
 
-        response = postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+        response = createCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
         
     return HttpResponse(response.text)
