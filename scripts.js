@@ -34,26 +34,13 @@ function deleteEvent(link) {
 }
 
 function postTest() {
-
-var settings = {
-  "async": false,
-  "crossDomain": true,
-  "url": "https://ltu.instructure.com/api/v1/calendar_events.json?calendar_event[context_code]=user_55647&calendar_event[title]=API%20Test%21&calendar_event[start_at]=2018-11-23T17:00:00Z&calendar_event[end_at]=2018-11-23T20:00:00Z&calendar_event[location_name]=LOCATION%20HERE&calendar_event[description]=DESCRIPTION%20HERE",
-  "method": "POST",
-  "headers": {
-    "Authorization": "Bearer 3755~qiagv2UfrmAV2EHDo99zARLS9wdWShL5sCVVDiLhK0TZTrpdhM99gKYWoYxdP1Si",
-    "cache-control": "no-cache",
-    "Postman-Token": "de98361e-ccc5-49b8-a8aa-850091dbc355"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-
 }
 
 function sendEvent(link) {
+
+  var user_id = O('userId').value;
+  var token = O('accessToken').value;
+
   var title = link.parentNode.parentNode.querySelectorAll("*[name='title']")[0].value;
   var startDate = link.parentNode.parentNode.querySelectorAll("*[name='startDate']")[0].value;
   var startTime = link.parentNode.parentNode.querySelectorAll("*[name='startTime']")[0].value;
@@ -65,13 +52,18 @@ function sendEvent(link) {
   var start_at = startDate + 'T' + startTime + ':00Z';
   var end_at = endDate + 'T' + endTime + ':00Z';
 
-  alert(title);  
-  alert(start_at);
-  alert(end_at); 
+  alert(user_id);
+  alert(token);
+
+  alert(title);
+  alert(startDate);
+  alert(startTime);
+  alert(endDate);
+  alert(endTime);
+  alert(location);
+  alert(description);
 
   postTest();
-
-  /* deleteEvent(link);*/
 }
 
 function deleteAllEvents() {
