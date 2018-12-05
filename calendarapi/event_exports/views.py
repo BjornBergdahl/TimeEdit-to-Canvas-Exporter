@@ -36,17 +36,17 @@ def postCalendarEvent(user, token, title, description, start_date, start_time, e
                'calendar_event[location_name]': location}
 
     az = HTTPBearerAuth(token)
-    r = requests.post(URI, data=payload, auth=az)
-    print(r.text)
+    response = requests.post(URI, data=payload, auth=az)
+
+    return response
 
 
 # remove this token in production
 @csrf_exempt
-def test(request):
+def calendarevent(request):
     
     if request.method == 'POST':
         received = request.POST
-        
         print("received", received)
         
         user = received.get('user', '')
@@ -60,6 +60,6 @@ def test(request):
         end_time = received.get('end_time', '')
         location = received.get('location', '')
 
-        postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
-    
-    return HttpResponse('Test HTTPResponse here')
+        response = postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
+        
+    return HttpResponse(response.text)
