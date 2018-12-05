@@ -2,22 +2,13 @@ from django.shortcuts import render
 from rest_framework import generics
 from .models import EventExport
 from .serializers import EventExportSerializer
-from requests import *
-import requests
+from requests import *   # ?
+import requests          # ?
 from django.http import HttpResponse
+# from django.http import HttpRequest
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-# Unnecessary
-class EventExportList(generics.ListCreateAPIView):
-    queryset = EventExport.objects.all()
-    serializer_class = EventExportSerializer
-
-# Unnecessary
-class EventExportDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = EventExport.objects.all()
-    serializer_class = EventExportSerializer
-
 class HTTPBearerAuth(requests.auth.AuthBase):
     def __init__(self, token):
         self.token = token
@@ -52,36 +43,23 @@ def postCalendarEvent(user, token, title, description, start_date, start_time, e
 # remove this token in production
 @csrf_exempt
 def test(request):
-    print('test called')
-
-    """
-    user = '55647'
-    token = '3755~uRL5P97uVze67EAc4DXf01lA9zQ74tCbGCtz2MM9vRTKKcbaHGDrdWf0AczQ9NZP'
-
-    title = 'Python test!'
-    description = 'description test'
-    start_date = '2018-11-23'
-    start_time = '17:00'
-    end_date = '2018-11-23'
-    end_time = '20:00'
-    location = 'location test'
-    """
-
+    
     if request.method == 'POST':
-        # postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
-        user = request.POST.get('user', '')
-        token = request.POST.get('token', '')
+        received = request.POST
+        
+        print("received", received)
+        
+        user = received.get('user', '')
+        token = received.get('token', '')
+        
+        title = received.get('title', '')
+        description = received.get('description', '')
+        start_date = received.get('start_date', '')
+        start_time = received.get('start_time', '')
+        end_date = received.get('end_date', '')
+        end_time = received.get('end_time', '')
+        location = received.get('location', '')
 
-        title = request.POST.get('title', '')
-        description = request.POST.get('description', '')
-        start_date = request.POST.get('start_date', '')
-        start_time = request.POST.get('start_time', '')
-        end_date = request.POST.get('end_date', '')
-        end_time = request.POST.get('end_time', '')
-        location = request.POST.get('location', '')
-
-        print(user, " ", token, " ", "va")
         postCalendarEvent(user, token, title, description, start_date, start_time, end_date, end_time, location)
-        print("YUP")
     
     return HttpResponse('Test HTTPResponse here')
