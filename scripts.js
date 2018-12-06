@@ -34,7 +34,42 @@ function deleteEvent(link) {
 }
 
 function postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description) {
-  
+  alert("in post test")
+  var URL = 'http://localhost:8000/api/v1/calendarevent';
+  var xhr = new XMLHttpRequest();
+  var fd = new FormData();
+
+  alert("1")
+  fd.append('user', user_id);
+  fd.append('token', token);
+
+  fd.append('title', title);
+  fd.append('description', description);
+  fd.append('start_date', startDate);
+  fd.append('start_time', startTime);
+  fd.append('end_date', endDate);
+  fd.append('end_time', endTime);
+  fd.append('location', location);
+  alert("2")
+
+  // On successful data submission
+  xhr.addEventListener('load', function(event) {
+    alert('Yeah! Data sent and response loaded.');
+  });
+
+  // On error
+  xhr.addEventListener('error', function(event) {
+    alert('Oops! Something went wrong.');
+  });
+
+  alert("3")
+  // Set up request
+  xhr.open('POST', URL);
+
+  // Send FormData object; HTTP headers are set automatically
+  alert("4")
+  xhr.send(fd);
+  alert("5");
 }
 
 function sendEvent(link) {
@@ -53,16 +88,7 @@ function sendEvent(link) {
   var start_at = startDate + 'T' + startTime + ':00Z';
   var end_at = endDate + 'T' + endTime + ':00Z';
 
-  alert(user_id);
-  alert(token);
-
-  alert(title);
-  alert(startDate);
-  alert(startTime);
-  alert(endDate);
-  alert(endTime);
-  alert(location);
-  alert(description);
+  alert(user_id + " --- " + token + " --- " + title + " --- " + startDate + " --- " + startTime + " --- " + endDate + " --- " + endTime + " --- " + location + " --- " + description);
 
   postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description);
 }
