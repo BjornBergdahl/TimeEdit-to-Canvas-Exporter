@@ -33,7 +33,7 @@ function deleteEvent(link) {
   link.parentNode.parentNode.parentNode.parentNode.parentNode.remove();
 }
 
-function postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description) {
+function postTest(link, user_id, token, title, startDate, startTime, endDate, endTime, location, description) {
   var URL = 'http://localhost:8000/api/v1/calendarevent';
   var xhr = new XMLHttpRequest();
   var fd = new FormData();
@@ -51,13 +51,17 @@ function postTest(user_id, token, title, startDate, startTime, endDate, endTime,
 
   // On successful data submission
   xhr.addEventListener('load', function(event) {
-    alert('Yeah! Data sent and response loaded.');
-    xhr.statusText;
+    alert('Calendar Event published in Canvas!');
+    /* alert(xhr.statusText);
+    alert(xhr.responseText); */
+    deleteEvent(link);
   });
 
   // On error
   xhr.addEventListener('error', function(event) {
-    alert('Oops! Something went wrong.');
+    alert('Something went wrong. Event not exported.');
+    alert(xhr.statusText);
+    alert(xhr.responseText);
   });
 
   // Set up request
@@ -83,9 +87,11 @@ function sendEvent(link) {
   var start_at = startDate + 'T' + startTime + ':00Z';
   var end_at = endDate + 'T' + endTime + ':00Z';
 
-  alert(user_id + " --- " + token + " --- " + title + " --- " + startDate + " --- " + startTime + " --- " + endDate + " --- " + endTime + " --- " + location + " --- " + description);
+  // alert(user_id + " --- " + token + " --- " + title + " --- " + startDate + " --- " + startTime + " --- " + endDate + " --- " + endTime + " --- " + location + " --- " + description);
 
-  postTest(user_id, token, title, startDate, startTime, endDate, endTime, location, description);
+  postTest(link, user_id, token, title, startDate, startTime, endDate, endTime, location, description);
+
+  /* deleteEvent(link); */
 }
 
 function deleteAllEvents() {
