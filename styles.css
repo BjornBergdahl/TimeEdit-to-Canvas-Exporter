@@ -184,3 +184,6 @@ button {
 	background: #F2F2F2;
 	display: none; /* REMOVE IF YOU WANT ALL STEPS TO SHOW */
 }
+#returnMessage {
+	color: green;
+}

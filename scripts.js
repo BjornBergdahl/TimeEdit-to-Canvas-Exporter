@@ -51,17 +51,14 @@ function postTest(link, user_id, token, title, startDate, startTime, endDate, en
 
   // On successful data submission
   xhr.addEventListener('load', function(event) {
-    alert('Calendar Event published in Canvas!');
-    /* alert(xhr.statusText);
-    alert(xhr.responseText); */
+    O('returnMessage').innerHTML = O('returnMessage').innerHTML + 'Calendar event ' + title + ', ' + startDate + ' @ ' + startTime + ', published to Canvas <br />';
     deleteEvent(link);
+
   });
 
   // On error
   xhr.addEventListener('error', function(event) {
     alert('Something went wrong. Event not exported.');
-    alert(xhr.statusText);
-    alert(xhr.responseText);
   });
 
   // Set up request
@@ -87,11 +84,7 @@ function sendEvent(link) {
   var start_at = startDate + 'T' + startTime + ':00Z';
   var end_at = endDate + 'T' + endTime + ':00Z';
 
-  // alert(user_id + " --- " + token + " --- " + title + " --- " + startDate + " --- " + startTime + " --- " + endDate + " --- " + endTime + " --- " + location + " --- " + description);
-
   postTest(link, user_id, token, title, startDate, startTime, endDate, endTime, location, description);
-
-  /* deleteEvent(link); */
 }
 
 function deleteAllEvents() {
@@ -180,7 +173,7 @@ function generateForm(id, title, startDate, startTime, endDate, endTime, locatio
 
   var eventTitle = document.createElement('div');
   eventTitle.setAttribute('class', 'eventHeader');
-  eventTitle.innerHTML = id;
+  eventTitle.innerHTML = startDate + " &nbsp;@&nbsp;  " + startTime;
 
   var eventContent = document.createElement('div');
   eventContent.setAttribute('class', 'eventContent');
