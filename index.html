@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>TimeEdit to Canvas Exporter</title>
+	<meta name="description" content="TimeEdit to Canvas Exporter">
+	<meta name="author" content="Andreas kuoppa, Björn Bergdahl">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<header>
+		<div class="centerWrapper">
+			<div class="extraMargin">
+			<h1>TimeEdit to Canvas exporter</h1>
+			<p> Export your TimeEdit calendar to Canvas in 3 simple steps!</p>
+			<div class="divider"></div>
+			</div>
+		</div>
+	</header>
+
+	<div class="centerWrapper">
+		<main>
+
+			<div id="first" class="card">
+				<h3>Step 1: Import calendar Events from TimeEdit</h3>
+
+				<p>Copy the URL from a TimeEdit calendar you wish to import from.</p>
+
+				<div id="TimeEditLink">
+					<a id="logoLink" href="https://cloud.timeedit.net/ltu/web/schedule1/" target="_blank">
+						<span id="timeEditLogo">TE</span>
+						&nbsp;&nbsp;&nbsp;&nbsp;<span class="underline">Go To TimeEdit (new tab)</span>
+					</a>
+				</div>
+
+				<p>Paste the URL here and click Import:</p>
+
+				<form>
+					<input id="calendarURL" type="text" name="link" class="fullWidth">
+					<div class="container">
+			  			<span class="lock"></span>
+			  		</div>
+				</form>
+
+				<div class="buttonWrapper">
+					<button id="importButton" onclick="importCalendar()" class="blueButton">Import&nbsp;&nbsp;<i class="fas fa-download"></i></button>
+				</div>
+			</div>
+
+
+			<div id="second" class="card">
+				<h3>Step 2: Enter Canvas Access Settings</h3>
+
+				<p>Enter settings that grants access to a Canvas calendar.</p>
+
+				<form>
+					<div class="row">
+						<div class="column">
+							Calendar type:
+						</div>
+						<div class="column">
+							<select id="selectCalendar" onchange="hideIrrelevant()">
+								<option value="user">User Calendar</option>
+								<option value="course" disabled>Course Calendar</option>
+							</select>
+						</div>
+					</div>
+
+					<!--
+					<div class="row student">
+						<div class="column">
+							LTU ID:
+						</div>
+						<div class="column">
+							<input type="text" name="ltuId">
+						</div>
+					</div>
+					-->
+
+					<div class ="row student">
+						<div class="column">
+							User ID:
+						</div>
+						<div class="column">
+							<input type="text" name="userId" id="userId">
+						</div>
+					</div>
+
+					<!--
+					<div class="row course">
+						<div class="column">
+							Course Code:
+						</div>
+						<div class="column">
+							<input type="text" name="courseCode">
+						</div>
+					</div>
+					-->
+
+					<div class="row course">
+						<div class="column">
+							Course ID:
+						</div>
+						<div class="column">
+							<input type="text" name="courseId">
+						</div>
+					</div>
+
+					Canvas Access Token:
+					<input type="text" name="accessToken" id="accessToken" class="fullWidth">
+				</form>
+
+				<!--
+				<div class="buttonWrapper">
+					<button id="importButton" onclick="confirmSettings()" class="blueButton">Confirm Settings</button>
+				</div>
+				-->
+			</div>
+
+			<div id="third" class="card">
+				<h3>Step 3: Edit and Export Calendar Events</h3>
+
+				<p>Edit your imported calendar events and export them to Canvas.</p>
+
+				<p id="returnMessage"></p>
+
+				<div id="formInserter"></div>
+
+				<div class="buttonWrapper">
+					<button class="redButton" onclick="deleteAllEvents()">Delete all&nbsp;&nbsp;<i class="fas fa-trash-alt"></i></button>
+					<!--<button class="greenButton">Send all&nbsp;&nbsp;<i class="fas fa-paper-plane"></i></button>-->
+				</div>
+			</div>
+
+			<div id="fourth" class="card">
+				<h3>Done!</h3>
+
+				<p>You have no more calendar events left to send.</p>
+
+
+				<div class="buttonWrapper">
+					<button id="importButton" class="blueButton">Export another calendar&nbsp;&nbsp;<i class="fas fa-plus-square"></i></button>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<footer>
+		<div id="footerContent">
+			<br>
+			<p>A service for exporting calendar events from TimeEdit to Canvas.</p>
+
+			<p>Built for use at Lulea University of Technology.</p>
+
+			<p>Made by Andreas Kuoppa and Björn Bergdahl</p>
+
+			<p>&copy; 2018</p>
+
+			<div class="divider"></div>
+
+			<p><a href="">[TERMS OF USE HERE]</a></p>
+
+			<p>Further development of this service is allowed, as long as it conforms to the <a href="">[LICENSE HERE]</a> and our <a href="">[OWN LICENCE HERE]</a>.</p>
+
+			<p>The source code for this service can be found here<br><a href="">[GITHUB LINK HERE]</a>.</p>
+			<br>
+		</div>
+	</footer>
+
+	<script src="short.js"></script>
+	<script src="scripts.js"></script>
+
+</body>
+
+</html>

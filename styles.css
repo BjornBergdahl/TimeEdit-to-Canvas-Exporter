@@ -1,0 +1,189 @@
+body {
+	margin: 0;
+	font-family: "Neue Helvetica", Lato, Calibri Light, sans-serif;
+	font-weight: normal;
+	line-height: 1.5;
+	color: #18324D;
+	width: 100%;
+	background: white;
+}
+#logoLink {
+	text-decoration: none;
+	display: block;
+}
+.underline {
+	text-decoration: underline;
+}
+#logoLink:hover {
+	background: lightgrey;
+}
+#timeEditLogo {
+	width: 30px;
+	line-height: 30px;
+	height: 30px;
+	display: inline-block;
+	background: white;
+	text-align: center;
+	font-weight: bolder;
+	color: #1C5469;
+	border: 12px solid #1C5469;
+}
+header {
+	background: #18324D;
+	color: white; 
+	margin-top: -1.5em;
+	text-align: left;
+}
+h1 {
+	font-size: 1.75em;
+	padding-top: 0.5em;
+}
+.centerWrapper {
+	max-width: 840px;
+	margin: 0 auto;
+}
+main {
+	margin: 1em 1em;
+	line-height: 3em;
+}
+input, select, textarea {
+	font-family: "Neue Helvetica", Lato, Calibri Light, sans-serif;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	height: 2.5em;
+	color: #18324D;
+}
+input, select {
+	width: 100%;
+	max-width: 250px;
+}
+option {
+	font-size: 1.25em;
+}
+input, select, textarea {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    padding-left: .75em;
+}
+textarea {
+	height: 5em;
+	padding: .75em;
+}
+.fullWidth {
+	width: 100%;
+	max-width: none;
+}
+
+footer {
+	background: #D2D2D2;
+	text-align: center;
+}
+#footerContent {
+	width: 80%;
+	margin: 0 auto;
+}
+.divider {
+	border: .5px solid grey;
+	max-width: 840px;
+	margin: 0 auto;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+
+.centerButtonWrap {
+	text-align: center;
+}
+button {
+	font-size: 1em;
+	color: white;
+	border-radius: 5px;
+	line-height: 2.25em;
+	cursor: pointer;
+	padding: 0 2em 0 2em;
+	margin: 0 0 1em 1em;
+}
+.buttonWrapper {
+	text-align: right;
+}
+.blueButton {
+	background: #18324D;
+	border: 1px solid #18324D;
+}
+.greenButton {
+	background: #1C6018;
+	border: 1px solid #1C6018;
+}
+.redButton {
+	background: #751E20;
+	border: 1px solid #751E20;
+}
+.blueButton:hover, .greenButton:hover, .redButton:hover {
+	background: grey;
+	border-color: grey;
+}
+
+.row {
+	display: flex;
+}
+.column {
+	flex: 50%;
+}
+
+.eventBox {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.eventHeader {
+	background: #18324D;
+	color: white;
+	/*border-radius: 5px 5px 0 0;*/
+	cursor: pointer;
+}
+.eventContent {
+	border: 1px solid #18324D;
+	border-top: none;
+	border-radius: 0 0 5px 5px;
+}
+.extraMargin {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+.eventContent {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+.eventHeader:hover {
+ 	background-color: grey;
+}
+
+.eventHeader:before {
+    content: '\02795\00A0\00A0'; /* Unicode character for "plus" sign (+) and unicode for spaces*/
+    font-size: 1em;
+    color: white;
+    margin-left: 1em;
+    display: inline-block;
+}
+.active:before {
+    content: "\2796\00A0\00A0"; /* Unicode character for "minus" sign (-) */
+}
+
+.card {
+	border: 1px solid lightgrey;
+	margin: 1em 0 1em 0;
+	padding: 1em;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+.sunken {
+	pointer-events: none;
+    opacity: 0.4;
+	border: 1px solid lightgrey;
+	padding: 1em;
+	background: #F2F2F2;
+	display: none; /* REMOVE IF YOU WANT ALL STEPS TO SHOW */
+}
+#returnMessage {
+	color: green;
+}
